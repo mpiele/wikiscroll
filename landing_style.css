@@ -9,8 +9,10 @@ body {
   justify-content: flex-start; /* Allow content to start at the top */
   padding: 2rem;
   min-height: 100vh;
-  overflow-y: auto; /* Allow scrolling if the keyboard appears */
   margin: 0;
+  padding-bottom: 3rem; /* Add space at the bottom */
+  box-sizing: border-box; /* Ensure padding is included in the height calculation */
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Page title */
