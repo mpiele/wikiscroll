@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="landing_style.css" />
   <title>Wikiscroll</title>
 </head>
 <body>  
-  <h1>Select a Category</h1>
+  <!-- Title for the page -->
+  <h1 id="page-title">Wikiscroll</h1>
+  
+  <h2>Select a Category</h2>
+  
   <form id="categoryForm">
-    <label><input type="radio" name="category" value="culture" /> Culture</label><br>
-    <label><input type="radio" name="category" value="geography" /> Geography</label><br>
-    <label><input type="radio" name="category" value="history" /> History</label><br>
-    <label><input type="radio" name="category" value="science" /> Science</label><br>
-    <label><input type="radio" name="category" value="space" /> Space</label><br>
-    <label><input type="radio" name="category" value="technology" /> Technology</label><br><br>
+    <input type="radio" id="culture" name="category" value="culture" />
+    <label for="culture">Culture</label>
+
+    <input type="radio" id="geography" name="category" value="geography" />
+    <label for="geography">Geography</label>
+
+    <input type="radio" id="history" name="category" value="history" />
+    <label for="history">History</label>
+
+    <input type="radio" id="science" name="category" value="science" />
+    <label for="science">Science</label>
+
+    <input type="radio" id="space" name="category" value="space" />
+    <label for="space">Space</label>
+
+    <input type="radio" id="technology" name="category" value="technology" />
+    <label for="technology">Technology</label>
+
     <button type="submit">Continue</button>
   </form>
 

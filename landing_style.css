@@ -1,0 +1,136 @@
+/* General body styling */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 100vh;
+    overflow: hidden; /* Prevents unwanted scrollbar */
+    margin: 0; /* Prevent any default margin */
+  }
+  
+  /* Page title */
+  #page-title {
+    font-size: 2.5rem;
+    color: #64b5f6;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Heading for the category selection */
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #64b5f6;
+    text-align: center;
+  }
+  
+  /* Form container */
+  #categoryForm {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Hide default radio buttons */
+  #categoryForm input[type="radio"] {
+    display: none;
+  }
+  
+  /* Custom label styles for better appearance */
+  #categoryForm label {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  /* Category-specific background colors when radio is checked */
+  #categoryForm input[type="radio"][value="culture"]:checked + label {
+    background-color: #f06292; /* Pink */
+  }
+  
+  #categoryForm input[type="radio"][value="geography"]:checked + label {
+    background-color: #4caf50; /* Green */
+  }
+  
+  #categoryForm input[type="radio"][value="history"]:checked + label {
+    background-color: #ff9800; /* Orange */
+  }
+  
+  #categoryForm input[type="radio"][value="science"]:checked + label {
+    background-color: #2196f3; /* Blue */
+  }
+  
+  #categoryForm input[type="radio"][value="space"]:checked + label {
+    background-color: #673ab7; /* Purple */
+  }
+  
+  #categoryForm input[type="radio"][value="technology"]:checked + label {
+    background-color: #03a9f4; /* Light blue */
+  }
+  
+  /* Label text color on hover */
+  #categoryForm label:hover {
+    color: #90caf9;
+  }
+  
+  /* Submit button */
+  #categoryForm button {
+    margin-top: 1rem;
+    background-color: #64b5f6;
+    color: #121212;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  #categoryForm button:hover {
+    background-color: #90caf9;
+    transform: scale(1.03);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    #categoryForm {
+      padding: 1.5rem 1rem;
+    }
+  
+    #categoryForm label {
+      font-size: 0.95rem;
+    }
+  
+    #categoryForm button {
+      width: 100%;
+    }
+  }
+  

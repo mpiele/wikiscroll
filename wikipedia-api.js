@@ -2,7 +2,7 @@ export async function getWikipediaSummary(articleTitle) {
     try {
         // Encode the article title for the API request
         const encodedTitle = encodeURIComponent(articleTitle);
-        
+
         // Construct the API URL
         const apiUrl = `https://en.wikipedia.org/w/api.php?` +
             `action=query` +
@@ -32,10 +32,18 @@ export async function getWikipediaSummary(articleTitle) {
         const page = pages[pageId];
         
         // Extract relevant information
+        let summary = page.extract || "No summary available";
+
+        // If no summary is available, fetch a fallback summary or section
+        if (summary === "No summary available") {
+            // You can choose to fallback to a more general description or specific section
+            summary = page.title + " article has no summary, but you can read more at: " + page.fullurl;
+        }
+
         const result = {
             title: page.title,
             link: page.fullurl,
-            summary: page.extract || "No summary available"
+            summary: summary
         };
 
         return result;

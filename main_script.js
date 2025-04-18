@@ -1,5 +1,6 @@
 import { getWikipediaSummary } from './wikipedia-api.js';
 
+// Helper: Get category from cookie
 function getCategoryFromCookie() {
   const cookies = document.cookie.split(";").map(c => c.trim());
   for (let cookie of cookies) {
@@ -10,64 +11,73 @@ function getCategoryFromCookie() {
   return null;
 }
 
+// Helper: Truncate summary text to maxLength characters
+function truncateSummary(text, maxLength = 250) {
+  return text.length > maxLength ? text.slice(0, maxLength).trim() + "…" : text;
+}
+
 const category = getCategoryFromCookie();
-console.log("Selected category:", category); // Example: "history"
+const $container = $("#article_container");
+const $title = $("#article_title");
+const $summary = $("#article_summary");
+const $url = $("#article_url");
 
-
+// Fetch random article from local JSON and get summary
 async function loadRandomItemAndSummary() {
   try {
-    // Fetch data from the JSON file
     const response = await fetch('articles/' + category + '.json');
     const data = await response.json();
-
-    // Pick a random item from the array
     const randomItem = data[Math.floor(Math.random() * data.length)];
-
-    // Fetch the Wikipedia summary for the random item
     const result = await getWikipediaSummary(randomItem);
 
-    // Return an object with the article name, summary, and link
     return {
       articleName: result.title,
-      summary: result.summary,
+      summary: truncateSummary(result.summary),
       link: result.link
     };
-
   } catch (error) {
     console.error('Error loading data or fetching summary:', error);
-    return null; // Return null if there's an error
+    return null;
   }
 }
 
-loadRandomItemAndSummary().then(result => {
+// Animate out -> update -> animate in
+async function animateArticleChange() {
+  // Slide out animation
+  $container.removeClass().addClass("article-slide-out-right");
+
+  await new Promise(resolve => setTimeout(resolve, 500)); // Wait for animation
+
+  const result = await loadRandomItemAndSummary();
+  if (!result) return;
+
+  // Update content
+  $title.text(result.articleName);
+  $summary.text(result.summary);
+  $url.attr("href", result.link).text("Learn more");
+
+  // Slide in animation
+  $container.removeClass().addClass("article-slide-in-left");
+
+  setTimeout(() => {
+    $container.removeClass(); // Clean up animation class
+  }, 500);
+}
+
+// Initial setup on page load
+$(document).ready(() => {
+  loadRandomItemAndSummary().then(result => {
     if (result) {
-        console.log('Article Name:', result.articleName);
-        console.log('Summary:', result.summary);
-        console.log('Link:', result.link);
-
-        $("#article_title").text(result.articleName);
-        $("#article_summary").text(result.summary);
-        $("#article_url").attr("href", result.link);
-
-    } else {
-        console.log('Error retrieving article data');
+      $title.text(result.articleName);
+      $summary.text(result.summary);
+      $url.attr("href", result.link).text("Learn more");
     }
-    });
+  });
 
-// Call the function and use the returned data
-$("#new_article_btn").click(function () {   
-    loadRandomItemAndSummary().then(result => {
-        if (result) {
-            console.log('Article Name:', result.articleName);
-            console.log('Summary:', result.summary);
-            console.log('Link:', result.link);
-    
-            $("#article_title").text(result.articleName);
-            $("#article_summary").text(result.summary);
-            $("#article_url").attr("href", result.link);
-    
-        } else {
-            console.log('Error retrieving article data');
-        }
-        });
+  // Bind button click
+  $("#new_article_btn").click(animateArticleChange);
+});
+
+document.getElementById("go_back_btn").addEventListener("click", function() {
+  window.history.back(); // Go back to the previous page in history
 });

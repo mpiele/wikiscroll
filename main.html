@@ -7,14 +7,18 @@
   <title>Wikiscroll</title>
 </head>
 <body>  
+  <div id="wrapper">
+    <div id="article_container">
+      <h1 id="article_title"></h1>
+      <p id="article_summary"></p>
+      <a target="_blank" id="article_url">Read more</a>
+    </div>
 
-  <h1 id="article_title"></h1>
-  <p id="article_summary"></p>
-  <a id="article_url">Learn more</a>
-
-  <button id="new_article_btn">New article</button>
+    <button id="new_article_btn">New article</button>
+    <button id="go_back_btn">Go Back</button>  <!-- New Go Back Button -->
+  </div>
 
   <script src="jquery3.7.1.js"></script>
-  <script type="module"  src="main_script.js"></script>
+  <script type="module" src="main_script.js"></script>
 </body>
 </html>
