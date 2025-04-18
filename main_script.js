@@ -1,9 +1,23 @@
 import { getWikipediaSummary } from './wikipedia-api.js';
 
+function getCategoryFromCookie() {
+  const cookies = document.cookie.split(";").map(c => c.trim());
+  for (let cookie of cookies) {
+    if (cookie.startsWith("category=")) {
+      return cookie.split("=")[1];
+    }
+  }
+  return null;
+}
+
+const category = getCategoryFromCookie();
+console.log("Selected category:", category); // Example: "history"
+
+
 async function loadRandomItemAndSummary() {
   try {
     // Fetch data from the JSON file
-    const response = await fetch('articles/history.json');
+    const response = await fetch('articles/' + category + '.json');
     const data = await response.json();
 
     // Pick a random item from the array

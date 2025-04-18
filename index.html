@@ -7,14 +7,18 @@
   <title>Wikiscroll</title>
 </head>
 <body>  
-
-  <h1 id="article_title"></h1>
-  <p id="article_summary"></p>
-  <a id="article_url">Learn more</a>
-
-  <button id="new_article_btn">New article</button>
+  <h1>Select a Category</h1>
+  <form id="categoryForm">
+    <label><input type="radio" name="category" value="culture" /> Culture</label><br>
+    <label><input type="radio" name="category" value="geography" /> Geography</label><br>
+    <label><input type="radio" name="category" value="history" /> History</label><br>
+    <label><input type="radio" name="category" value="science" /> Science</label><br>
+    <label><input type="radio" name="category" value="space" /> Space</label><br>
+    <label><input type="radio" name="category" value="technology" /> Technology</label><br><br>
+    <button type="submit">Continue</button>
+  </form>
 
   <script src="jquery3.7.1.js"></script>
-  <script type="module"  src="main_script.js"></script>
+  <script type="module"  src="landing_script.js"></script>
 </body>
 </html>
