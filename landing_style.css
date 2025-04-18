@@ -8,11 +8,9 @@ body {
   align-items: center;
   justify-content: flex-start; /* Allow content to start at the top */
   padding: 2rem;
-  min-height: calc(100vh - 3rem); /* Account for bottom padding space */
+  min-height: 100vh;
+  overflow-y: auto; /* Allow scrolling if the keyboard appears */
   margin: 0;
-  padding-bottom: 3rem; /* Add space at the bottom */
-  box-sizing: border-box; /* Ensure padding is included in the height calculation */
-  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Page title */
@@ -43,7 +41,6 @@ h2 {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  flex-grow: 1; /* Allow the form to take the remaining space */
 }
 
 /* Hide default radio buttons */
@@ -135,10 +132,10 @@ h2 {
   }
 
   h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   #categoryForm label {
-    font-size: 0.5rem;
+    font-size: 0.95rem;
   }
 }
