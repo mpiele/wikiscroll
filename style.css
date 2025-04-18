@@ -1,159 +1,178 @@
 /* Reset and base styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-  
-  /* Main layout wrapper */
-  #wrapper {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Container */
-  #article_container {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  /* Responsive font sizing */
-  #article_title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-  }
-  
-  #article_summary {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-    color: #cccccc;
-    max-height: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  /* URL */
-  #article_url {
-    display: inline-block;
-    color: #64b5f6;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    word-break: break-word;
-  }
-  #article_url:hover {
-    color: #90caf9;
-  }
-  
-  /* Button */
-  #new_article_btn {
-    margin-top: 1.5rem;
-    background-color: #64b5f6;
-    color: #121212;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%;
-    max-width: 600px;
-  }
-  #new_article_btn:hover {
-    background-color: #90caf9;
-    transform: scale(1.05);
-  }
-  
-  /* Animation classes */
-  .article-slide-out-right {
-    animation: slideOutRight 0.5s forwards;
-  }
-  .article-slide-in-left {
-    animation: slideInLeft 0.5s forwards;
-  }
-  
-  /* Keyframes */
-  @keyframes slideOutRight {
-    0% {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes slideInLeft {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 600px) {
-    #article_container {
-      padding: 1.5rem 1rem;
-      min-height: 260px;
-    }
-    #article_title {
-      font-size: 1.5rem;
-    }
-    #article_summary {
-      font-size: 0.95rem;
-    }
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  overflow-y: auto; /* Allow scrolling if needed */
+}
+
+/* Main layout wrapper */
+#wrapper {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; /* Allow content to expand as needed */
+}
+
+/* Container */
+#article_container {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Responsive font sizing */
+#article_title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+#article_summary {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #cccccc;
+  max-height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* URL */
+#article_url {
+  display: inline-block;
+  color: #64b5f6;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  word-break: break-word;
+}
+#article_url:hover {
+  color: #90caf9;
+}
+
+/* Button */
+#new_article_btn {
+  margin-top: 1.5rem;
+  background-color: #64b5f6;
+  color: #121212;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem; /* Add margin to avoid button touching the edge */
+}
+
+#new_article_btn:hover {
+  background-color: #90caf9;
+  transform: scale(1.05);
+}
+
+/* Go Back Button */
 #go_back_btn {
-    margin-top: 1rem;
-    background-color: #e92121;
-    color: #121212;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%;
-    max-width: 600px;
+  margin-top: 1rem;
+  background-color: #e92121;
+  color: #121212;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 600px;
+}
+
+#go_back_btn:hover {
+  background-color: #ef9a9a;
+  transform: scale(1.05);
+}
+
+/* Animation classes */
+.article-slide-out-right {
+  animation: slideOutRight 0.5s forwards;
+}
+
+.article-slide-in-left {
+  animation: slideInLeft 0.5s forwards;
+}
+
+/* Keyframes for animations */
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
   }
-  #go_back_btn:hover {
-    background-color: #ef9a9a;
-    transform: scale(1.05);
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  #article_container {
+    padding: 1.5rem 1rem;
+    min-height: 260px;
+  }
+
+  #article_title {
+    font-size: 1.5rem;
+  }
+
+  #article_summary {
+    font-size: 0.95rem;
+  }
+
+  /* Button adjustments for mobile */
+  #new_article_btn {
+    padding: 0.75rem;
+    max-width: 100%;
+  }
+
+  #go_back_btn {
+    padding: 0.75rem;
+    max-width: 100%;
+  }
+}
